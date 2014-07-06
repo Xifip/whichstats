@@ -60,3 +60,11 @@ responses_clean <- clean_responses[(clean_responses$voter_id %in%  vpositions_cl
 # number of responses to the survey (1188)
 
 length(levels(as.factor(responses_clean$response_id)))
+
+responses_cast <- dcast(responses_clean, response_id + voter_id ~ surveyquestion_id, value.var = "response_score")
+
+#rename cols
+responses_names <- names(responses_cast)
+responses_colnames <- unlist(lapply(responses_names, function(x) paste ("res", x, sep = "_")))
+
+colnames(responses_cast) <- responses_colnames
