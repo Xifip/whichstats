@@ -59,3 +59,11 @@ vpositions_clean2 <- vpositions_clean1[(vpositions_clean1$voter_id %in%  voter_i
 scorecheck2 <- by(vpositions_clean2[,5], vpositions_clean2$voter_id, sum)
 
 qplot(as.numeric(scorecheck2), binwidth = 81/30)
+
+vpositions_cast <- dcast(vpositions_clean2, voter_id ~ question_id, value.var = "voterposition_score")
+
+#rename cols
+vposition_names <- names(vpositions_cast)
+vpositions_colnames <- unlist(lapply(vposition_names, function(x) paste ("vp", x, sep = "_")))
+
+colnames(vpositions_cast) <- vpositions_colnames
