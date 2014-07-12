@@ -2,6 +2,7 @@ vpositions <- read.csv("data/voter_positions.csv")
 cpositions <- read.csv("data/candidate_positions.csv")
 questions <- read.csv("data/questions.csv")
 responses <- read.csv("data/surveyresponses.csv")
+issues <- read.csv("data/issues.csv")
 
 colnames(responses)[1] <- "response_id"
 colnames(responses)[9] <- "response_score"
@@ -18,6 +19,16 @@ colnames(vpositions)[1] <- "voterposition_id"
 colnames(vpositions)[5] <- "voterposition_score"
 colnames(vpositions)[6] <- "voterposition_created"
 colnames(vpositions)[7] <- "voterposition_updated"
+
+colnames(cpositions)[1] <- "candidateposition_id"
+colnames(cpositions)[3] <- "candidate_id"
+colnames(cpositions)[5] <- "candidateposition_score"
+colnames(cpositions)[7] <- "candidateposition_created"
+colnames(cpositions)[8] <- "candidateposition_updated"
+
+colnames(issues)[1] <- "issue_id"
+colnames(issues)[2] <- "issue_text"
+colnames(issues)[3] <- "issue_question_text"
 
 merge01 <- merge(responses, questions, by.x = "surveyquestion_id", by.y = "question_id")
 merge02 <- merge(merge01, vpositions, by = "voter_id")
