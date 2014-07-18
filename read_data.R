@@ -3,6 +3,10 @@ cpositions <- read.csv("data/candidate_positions.csv")
 questions <- read.csv("data/questions.csv")
 responses <- read.csv("data/surveyresponses.csv")
 issues <- read.csv("data/issues.csv")
+voters <- read.csv("data/voters.csv")
+candidates <- read.csv("data/candidates.csv")
+
+cpositions <- cpositions[cpositions$positionable_type == "Candidate",]
 
 colnames(responses)[1] <- "response_id"
 colnames(responses)[9] <- "response_score"
@@ -25,6 +29,9 @@ colnames(cpositions)[3] <- "candidate_id"
 colnames(cpositions)[5] <- "candidateposition_score"
 colnames(cpositions)[7] <- "candidateposition_created"
 colnames(cpositions)[8] <- "candidateposition_updated"
+
+colnames(candidates)[1] <- "candidate_id"
+colnames(voters)[1] <- "voter_id"
 
 colnames(issues)[1] <- "issue_id"
 colnames(issues)[2] <- "issue_text"

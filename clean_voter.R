@@ -1,5 +1,7 @@
 #source('read_data.R', echo = TRUE);
 
+library("ggplot2")
+library("reshape2")
 
 # sum the question ids for responses for each voter_id
 # by is a wrapper for tapply

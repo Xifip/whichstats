@@ -1,6 +1,9 @@
 #source('read_data.R', echo = TRUE);
 #source('clean_voter.R', echo = TRUE);
 
+library("ggplot2")
+library("reshape2")
+
 # sum the question ids for responses for each voter_id
 # by is a wrapper for tapply
 sumcheck <- by(responses[,6], responses$voter_id, sum)
