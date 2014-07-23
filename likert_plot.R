@@ -129,8 +129,8 @@ likert_plot_by_factor <- function(data, factor, factor_labels){
   #gender_vector[is.na(gender_vector)] <- 3
   #gender_factor <- factor(gender_vector, labels=c("Female", "Male", "Not given"))
   
-  l1<- likert(likert.df.resp[,1:5], grouping = data_factor)
-  l2<- likert(likert.df.resp[,6:10], grouping = data_factor)
+  l1<- likert(likert.df.resp[,1:2])#, grouping = data_factor)
+  l2<- likert(likert.df.resp[,3:4], grouping = data_factor)
   #l1<- likert(likert.df[,1:5], grouping = data_factor)
 
   #l2<- likert(likert.df[,6:10], grouping = data_factor)
@@ -148,7 +148,8 @@ likert_plot_by_factor <- function(data, factor, factor_labels){
 }
 
 responses_by_gender <- likert_plot_by_factor(merge_pos_survey,"res_1", c("Female", "Male"))
-responses_by_age <- likert_plot_by_factor(merge_pos_survey,"res_2", c("Under 18", "18-25", "25-34", "35-44", "45-54", "55-64", "Over 65"))
+responses_by_age <- likert_plot_by_factor(merge_pos_survey,"res_2", c("a", "b", "c", "d", "e", "f", "g"))
+#responses_by_age <- likert_plot_by_factor(merge_pos_survey,"res_2", c("Under 18", "18-25", "25-34", "35-44", "45-54", "55-64", "Over 65"))
 responses_by_location <- likert_plot_by_factor(merge_pos_survey,"res_3", c("Limerick city", "Limerick county", "Other"))
 responses_by_education <- likert_plot_by_factor(merge_pos_survey,"res_4", c("None", "Completed Primary", "Junior/Inter Cert. or equivalent", "Leaving Cert. or equivalent", "Diploma or Certificate", "University degree"))
 responses_by_party_affinity <- likert_plot_by_factor(merge_pos_survey,"res_5", c("Fine Gael", "Labour Party", "Fianna Fáil", "Sinn Féin", "United Left Alliance", "People Before Profit", "Socialist Party", "Green Party", "Anti-Austerity Alliance", "Other", "None"))
