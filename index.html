@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Dublin R - voting advise analysis</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Use of Likert package to analyse voter advise data">
+		<meta name="author" content="John Costello">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -43,37 +43,81 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+					<h1>Dublin R</h1>
+					<h3>Voter advise data analysed with the Likert package </h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>July 2014<br/><a href="http://hakim.se">John Costello</a> / <a href="http://twitter.com/hakimel">@costellosan</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+					<img width="100%" src="images/dilbert_survey.gif"/>
+				</section>
 
+
+				<section>
+					<h2>Topics</h2>
+					<ul>
+						<li>Likert Scales</li>
+						<li>Whichcandidate and the data</li>
+						<li>Likert package</li>
+						<li>Kohanan package</li>
+					</ul>
 					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						Questions at any time and we'll skip ahead quickly over some topics. 
 					</aside>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						<h2>Levels of measurement</h2>
+						<a href="images/measlev2.gif" class="image">
+							<img width="100%" src="images/measlev2.gif"/>
 						</a>
 					</section>
+					<section>
+						<h2>Likert Items and Scales</h2>
+						<a href="images/example_likert.png" class="image">
+							<img width="100%" src="images/example_likert.png"/>
+						</a>
+					</section>
+					<section>
+						<h2>Likert Items and Scales</h2>
+						<a href="images/likert_terms.png" class="image">
+							<img height="100%" src="images/likert_terms.png"/>
+						</a>
+					</section>
+					<section>
+						<h2><a href='#/3'>Likert items</a></h2>
+						<ol>
+							<li> We must think about individual Likert items and Likert scales (made up of multiple items)
+							in different ways.</li>
+							<li> Likert items represent an item format not a scale.</li>
+							<li> Whether Likert items are interval or ordinal is irrelevant in using Likert scale data, which
+							can be taken to be interval.</li>
+							<li> If a researcher presents the means and standard deviations (interval scale statistics) for
+							individual Likert items, he/she should also present the percent or frequency of people who
+							selected each option (a nominal scale statistic) and let the reader decide how to interpret the
+							results at the Likert-item level.</li>
+							<li> In any case, we should not rely too heavily on interpreting single items because single items
+							are relatively unreliable.</li>
+						</ol>
+						<small>source&nbsp <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
+					</section>
+					<section>
+						<h2>Likert scales</h2>
+						<ol>
+							<li> Likert scales are totals or averages of answers to multiple Likert items.</li>
+							<li> Likert scales contain multiple items and are therefore likely to be more reliable than single
+							items.</li>
+							<li> Naturally, the reliability of Likert scales should be checked using Cronbach alpha or another
+							appropriate reliability estimate.</li>
+							<li> Likert scales contain multiple items and can be taken to be interval scales so descriptive
+							statistics can be applied, as well as correlational analyses, factor analyses, analysis of
+							variance procedures, etc. (if all other design conditions and assumptions are met).</li>
+						</ol>
+						<small>source&nbsp <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
+					</section>					
 					<section>
 						<h2>Basement Level 1</h2>
 						<p>Press down or up to navigate.</p>
