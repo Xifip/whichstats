@@ -1,3 +1,16 @@
+# Read in the data from csv files exported from the whichcandidate.ie application
+
+# Description of the data frames
+
+  # vpostiions: voter positions on 27 statements
+  # cpositions: candidate positions on 27 statements
+  # questions: 9 optional profile questions presented to the voters
+  # responses: voter responses to the optional profile questions
+  # voters: constituency for the voter
+  # candidates: profile information for the candidates
+
+source('setup_data.R', echo = TRUE);
+
 vpositions <- read.csv("data/voter_positions.csv")
 cpositions <- read.csv("data/candidate_positions.csv")
 questions <- read.csv("data/questions.csv")
@@ -37,5 +50,5 @@ colnames(issues)[1] <- "issue_id"
 colnames(issues)[2] <- "issue_text"
 colnames(issues)[3] <- "issue_question_text"
 
-merge01 <- merge(responses, questions, by.x = "surveyquestion_id", by.y = "question_id")
-merge02 <- merge(merge01, vpositions, by = "voter_id")
+#merge01 <- merge(responses, questions, by.x = "surveyquestion_id", by.y = "question_id")
+#merge02 <- merge(merge01, vpositions, by = "voter_id")

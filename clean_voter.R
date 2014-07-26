@@ -1,7 +1,5 @@
-#source('read_data.R', echo = TRUE);
-
-library("ggplot2")
-library("reshape2")
+source('setup_data.R', echo = TRUE);
+source('read_data.R', echo = TRUE);
 
 # sum the question ids for responses for each voter_id
 # by is a wrapper for tapply
@@ -19,6 +17,7 @@ str(sumcheck)
 
 # next check for scores less than 20 as these are likely to be people entering random responses 
 # just to check out the site
+
 scorecheck <- by(vpositions[,5], vpositions$voter_id, sum)
 
 qplot(as.numeric(scorecheck))

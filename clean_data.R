@@ -25,4 +25,3 @@ voter_is_q1_p0 <- unique(positions_q1_0$voter_id)
 voter_is_q1_p1 <- unique(positions_q1_1$voter_id)
 voter_is_q1_p2 <- unique(positions_q1_2$voter_id)
 voter_is_q1_p3 <- unique(positions_q1_3$voter_id)
-
