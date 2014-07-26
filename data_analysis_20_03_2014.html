@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
+				<section data-markdown data-separator="^\n---\n$" data-vertical="^\n--\n$">
+					<script type="text/template">
+						# Data Analysis for sleep data
+						Contact: [john.costello@resmed.com](mailto:john.costello@resmed.com?Subject=data%20analysis), [gary.mcdarby@resmed.com](mailto:gary.mcdarby@resmed.com?Subject=data%20analysis)
+
+						<img width="300" class='no-box-shadow-img no-boarder-img no-background-img' src="../images/data_analysis/som/Time.in.Deep.png"/>			
+
+						---
+						
+						# Agenda
+						
+						* [Motivation](#/2) - Why do it?						
+						* [](#/3) - What are we talking about?
+						* [Tools & Methodology](#/4) - How to do it.
+						* [Dozer Example](#/5) - Filter characterisation
+						* [Skills](#/7)
+						* []
+
+						---
+
+						<h2 class="fragment roll-in">Motivation</h2>
+
+						<img height="550" src="../update-slides/brownbag/carrot-with-stick3.png"/>
+
+						--
+
+						## [Motivation](#/)
+
+						> Healthcare Informatics is becoming an increasingly important part of ResMed’s product and solutions portfolio - Don Darkin 16 March 2014
+
+						* <p class="fragment roll-in">ResMed is </p>
+						* <p class="fragment roll-in">Development risk</p>
+						* <p class="fragment roll-in">Performance</p>
+						* <p class="fragment roll-in">DFM</p>
+						* <p class="fragment roll-in">Trouble shooting/ root cause</p>
+						* <p class="fragment roll-in">Standardise approach</p>						
+						
+						---
+
+						### [What are we talking about?](#/)
+
+						<img width="700" class='no-boarder-img no-background-img' src="../update-slides/brownbag/sensor_08.png"/>
+
+						--						
+
+						### [Electromagnectic (EM) Finite Element Modelling](#/3)
+						
+						The finite element method divides the full problem space into many smaller regions (elements). 						
+
+						<img height="300" class='no-boarder-img no-background-img' src="../update-slides/brownbag/gr_fem_field_qty.png"/>
+						<img height="300" class='no-boarder-img no-background-img' src="../update-slides/brownbag/sensor_09.png"/>
+
+						--
+
+						### [Output of EM simulation](#/3)
+
+						When an EM simulation is complete you can export S-parameters for the passive structure simulated and you can view the electrical and magnetic fields.
+						
+						<img height="300" class='margin0 no-boarder-img no-background-img' src="../update-slides/brownbag/ant_01.png"/> <video class="margin0" height="300" data-autoplay src="../update-slides/brownbag/ant_sim_far_field_2.mp4" controls></video>
+
+						--
+
+						### [Linear circuit simulation (with ADS)](#/3)
+
+						We can cascade S-parameters from EM simulation with S-paramters or models for capacitors, inductors, diodes, FETs etc to simulate sub-circuits. For example the switched amplifier. 						
+						
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="../update-slides/brownbag/amp_01.png">
+											<img height="450" src="../update-slides/brownbag/amp_01.png"/>
+										</a>
+									</td>
+									<td style="vertical-align:top">
+										<div>
+											<a href="../update-slides/december/results/phempt_01_02.png">
+												<img width="200" src="../update-slides/december/results/phempt_01_02.png"/>
+											</a>
+										</div>
+										<div>
+											<a href="../update-slides/december/results/phempt_01_03.png">
+												<img width="175" src="../update-slides/december/results/phempt_01_03.png"/>
+											</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>	
+
+						--
+						
+						### [Non-linear circuit simulation (with ADS)](#/3)
+
+						<a href="../update-slides/december/results/dro_01_01.png">
+							<img height="300" src="../update-slides/december/results/dro_01_01.png"/>
+						</a>
+						<a href="../update-slides/q3/dro_HB_01.png">
+							<img height="300" src="../update-slides/q3/dro_HB_01.png"/>
+						</a> <a href="../update-slides/brownbag/dro_01.png">
+							<img height="300" src="../update-slides/brownbag/dro_01.png"/>
+						</a>	
+
+						---
+
+						## [Methodology](#/)
+						 
+						<img height="300" src="../update-slides/brownbag/batman_s.jpg"/>
+						<p class="fragment roll-in">Avoid the 'hero test'</p>
+						
+						--
+
+						## [Methodology](#/4)						 						
+
+						<img class="no-boarder-img no-background-img no-box-shadow-img" width="800" src="../update-slides/brownbag/method_01.png"/>
+						<p class="fragment roll-in highlight-green">The simulation is being tested against measurement, so now we need a good measurement method.</p>
+
+						--
+
+						## [Measurement Method](#/4)
+						###  Test Setup for small signal
+						
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="../update-slides/q3/vna_testbench.jpg">
+											<img width="600" src="../update-slides/q3/vna_testbench.jpg"/>
+										</a>
+									</td>
+									<td style="vertical-align:top">
+										<div>
+											<a href="../update-slides/q3/detector_test_01.png">
+												<img width="200" src="../update-slides/q3/detector_test_01.png"/>
+											</a>
+										</div>
+										<div>
+											<a href="../update-slides/q3/vna_validation.jpg">
+												<img width="200" src="../update-slides/q3/vna_validation.jpg"/>
+											</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						--
+						
+						## [Measurement de-embedding](#/4)
+						
+						<div style="position: relative; left: 0; top: 0;">
+						  <img class="no-boarder-img no-background-img no-box-shadow-img" src="../update-slides/brownbag/line_01.png" style="position: relative; top: 0; left: 0;"/>
+						  <img class="fragment roll-in no-boarder-img no-background-img no-box-shadow-img" src="../update-slides/brownbag/line_02.png" style="position: absolute; top: 0px; left: 23px;"/>
+						  <img class="fragment roll-in no-boarder-img no-background-img no-box-shadow-img" src="../update-slides/brownbag/line_03.png" style="position: absolute; top: 0px; left: 23px;"/>
+						  <img class="fragment roll-in no-boarder-img no-background-img no-box-shadow-img" src="../update-slides/brownbag/line_04.png" style="position: absolute; top: 0px; left: 23px;"/>
+						</div>
+
+						--
+
+						## [Measurement de-embedding](#/4)
+						### Does it really matter?
+
+						<div>
+							<a href="../update-slides/brownbag/line_06.png">
+								<img width="500" src="../update-slides/brownbag/line_06.png"/>
+							</a>
+							<a href="../update-slides/december/deembedding/deembedding_10mmline_06.png">
+								<img width="200" src="../update-slides/december/deembedding/deembedding_10mmline_06.png"/>
+							</a>
+						</div>
+
+						--
+
+						## [Measurement de-embedding](#/4)
+						### Does it really matter?
+
+						<div>
+							<a href="../update-slides/brownbag/line_05.png">
+								<img width="500" src="../update-slides/brownbag/line_05.png"/>
+							</a>
+							<a href="../update-slides/december/deembedding/deembedding_10mmline_04.png">
+								<img width="200" src="../update-slides/december/deembedding/deembedding_10mmline_04.png"/>
+							</a>
+						</div>	
+
+						--
+
+						## [Methodology](#/4)						 						
+
+						<img class="no-boarder-img no-background-img no-box-shadow-img" width="800" src="../update-slides/brownbag/method_01.png"/>
+
+						---
+
+						<img class="no-boarder-img no-background-img no-box-shadow-img" width="800" src="../update-slides/brownbag/example.png"/>
+
+						--
+
+						## [Characterisation of filter](#/5)
+
+						<div>
+							<a href="../update-slides/brownbag/filter_01.png">
+								<img width="600" src="../update-slides/brownbag/filter_01.png"/>
+							</a>
+							<a href="../update-slides/brownbag/filter_04.png">
+								<img width="200" src="../update-slides/brownbag/filter_04.png"/>
+							</a>
+						</div>		
+
+						--
+
+						## [Characterisation of filter](#/5)
+
+						<div>
+							<a href="../update-slides/brownbag/filter_02.png">
+								<img height="400" class="margin0 no-boarder-img no-background-img" src="../update-slides/brownbag/filter_02.png"/>
+							</a> <video class="margin0" height="400" data-autoplay src="../update-slides/brownbag/filter_01.mp4" controls></video>
+						</div>
+
+						--
+
+						## [Characterisation of filter](#/5)
+
+						<div>
+							<a href="../update-slides/brownbag/filter_03.png">
+								<img width="400" src="../update-slides/brownbag/filter_03.png"/>
+							</a>
+							<a href="../update-slides/brownbag/cross_section_01.png">
+								<img width="400" src="../update-slides/brownbag/cross_section_01.png"/>
+							</a>
+						</div>	
+
+						---
+						
+						# Agenda
+						
+						* [RF simulation overview](#/2) - What are we talking about?
+						* [Motivation](#/3) - Why do it?
+						* [Methodology](#/4) - How to do it.
+						* [Example](#/5) - Filter characterisation
+						* [Potential and limitations](#/7)
+
+						---
+
+						## [Potential and limitations](#/)
+
+						* Design cycle risk
+						* Yield - monte carlo and sensitiy analysis
+						* System Performance - but not all system issues
+						* Platform approach, reusable design	
+
+						Check the wiki http://rstwiki.herokuapp.com/			
+
+					</script>
+				</section>			
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>							
