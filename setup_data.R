@@ -10,11 +10,11 @@ ensure.installed <- function(package){
 ensure.installed("ggplot2");
 library(ggplot2);
 
-ensure.installed("plyr");
-library(plyr);
+ensure.installed("likert");
+library(likert);
 
 ensure.installed("reshape2");
 library(reshape2);
 
-ensure.installed("likert");
-library(likert);
+ensure.installed("plyr");
+library(plyr);

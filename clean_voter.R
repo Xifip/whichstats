@@ -1,3 +1,8 @@
+# clean up the voter responses to 27 positions
+# remove duplicate responses for each voter id
+# remove sequenctial identical responses
+# remove responses which had only answered a few questions as these are probably just checking the site and giving random answers  
+
 source('setup_data.R', echo = TRUE);
 source('read_data.R', echo = TRUE);
 
@@ -20,9 +25,9 @@ str(sumcheck)
 
 scorecheck <- by(vpositions[,5], vpositions$voter_id, sum)
 
-qplot(as.numeric(scorecheck))
+qplot(as.numeric(scorecheck), main="Histogram of voter total scores over 27 questions", xlab="score")
 
-qplot(as.numeric(scorecheck[!(scorecheck %in% c(0:20, 81))]), binwidth = 81/30)
+qplot(as.numeric(scorecheck[!(scorecheck %in% c(0:20, 81))]), binwidth = 81/30, main="Histogram of voter total scores over 27 questions - removed lower scores", xlab="score")
 
 voter_ids_out_of_range <- as.numeric(names(scorecheck[(scorecheck %in% c(0:20, 81))]))
 

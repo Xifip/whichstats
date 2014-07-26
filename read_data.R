@@ -2,7 +2,7 @@
 
 # Description of the data frames
 
-  # vpostiions: voter positions on 27 statements
+  # vpostisons: voter positions on 27 statements
   # cpositions: candidate positions on 27 statements
   # questions: 9 optional profile questions presented to the voters
   # responses: voter responses to the optional profile questions

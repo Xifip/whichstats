@@ -1,8 +1,9 @@
-#source('read_data.R', echo = TRUE);
-#source('clean_voter.R', echo = TRUE);
+# removes duplicate responses to optional survey questions
 
-library("ggplot2")
-library("reshape2")
+source('setup_data.R', echo = TRUE);
+source('read_data.R', echo = TRUE);
+source('clean_voter.R', echo = TRUE);
+
 
 # sum the question ids for responses for each voter_id
 # by is a wrapper for tapply
