@@ -43,116 +43,135 @@
 				<!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
 				<section data-markdown data-separator="^\n---\n$" data-vertical="^\n--\n$">
           <script type="text/template">
-						# Data Analysis for sleep data
-						Contact: [john.costello@resmed.com](mailto:john.costello@resmed.com?Subject=data%20analysis), [gary.mcdarby@resmed.com](mailto:gary.mcdarby@resmed.com?Subject=data%20analysis)
-
-						<img width="300" class='no-box-shadow-img no-boarder-img no-background-img' src="../images/data_analysis/som/Time.in.Deep.png"/>			
-
-						---
-						
-						# Agenda
-						
-						* [Motivation](#/2) - Why do it?						
-						* [](#/3) - What are we talking about?
-						* [Tools & Methodology](#/4) - How to do it.
-						* [Dozer Example](#/5) - Filter characterisation
-						* [Skills](#/7)
-						* []			
-
-						---
-												
 						# Dublin R
 						### Voter advise data analysed with the Likert package
-						
-						<p>
-						  <small>July 2014<br/><a href="http://hakim.se">John Costello</a> / <a href="http://twitter.com/hakimel">@costellosan</a></small>
-					  </p>			
+
+  						<small>Contact: &nbsp; [costelljohn@gmail.com](mailto:costelljohn@gmail.com?Subject=data%20analysis)</small>
+
+						  <small>July &nbsp; 2014</small>
 
 						---
-												
-						<img width="100%" src="images/dilbert_survey.gif"/>		
+
+						<img width="100%" src="images/dilbert_survey.gif"/>
 
 						---
-												
-						# Topics			
+
+						# Topics
+
+						* [Likert](#/3)
+						* [Whichcandidate and the data](#/4)
+						* [Likert package](#/5)
+						* [Kohanan package](#/6)
 
 						---
-												
-						# Dublin R			
 
-						---
-												
-						# Dublin R			
+						## [Likert - Levels of measurement](#/2)
 
-						---
-												
-						# Dublin R			
+						<a href="images/measlev2.gif" class="image">
+						  <img width="100%" src="images/measlev2.gif"/>
+					  </a>
 
-						---
-												
-						# Dublin R
-									
+						--
 
-						---
-										  
-					  <img width="100%" src="images/dilbert_survey.gif"/>
-					  
-					  ---
-					<h2>Topics</h2>
-					<ul>
-						<li>Likert Scales</li>
-						<li>Whichcandidate and the data</li>
-						<li>Likert package</li>
-						<li>Kohanan package</li>
-					</ul>
-					<aside class="notes">
-						Questions at any time and we'll skip ahead quickly over some topics. 
-					</aside>
+					  ##[Likert - Items and Scales](#/3)
 
-				---
-					<h2>Levels of measurement</h2>
-					<a href="images/measlev2.gif" class="image">
-						<img width="100%" src="images/measlev2.gif"/>
-					</a>
-        --
-					<h2>Likert Items and Scales</h2>
-					<a href="images/example_likert.png" class="image">
-						<img width="100%" src="images/example_likert.png"/>
-					</a>
-        --
-					<h2>Likert Items and Scales</h2>
-					<a href="images/likert_terms.png" class="image">
-						<img height="100%" src="images/likert_terms.png"/>
-					</a>
-        --
-					<h2><a href='#/3'>Likert items</a></h2>
-					<ol>
-						<li> We must think about individual Likert items and Likert scales (made up of multiple items)
-						in different ways.</li>
-						<li> Likert items represent an item format not a scale.</li>
-						<li> Whether Likert items are interval or ordinal is irrelevant in using Likert scale data, which
-						can be taken to be interval.</li>
-						<li> If a researcher presents the means and standard deviations (interval scale statistics) for
+					  <a href="images/example_likert.png" class="image">
+						  <img width="100%" src="images/example_likert.png"/>
+					  </a>
+
+						--
+
+						##[Likert - Terms](#/3)
+
+						<a href="images/likert_terms.png" class="image">
+							<img height="100%" src="images/likert_terms.png"/>
+						</a>
+
+						--
+
+						##[Likert - Items](#/3)
+
+						1. We must think about individual Likert items and Likert scales (made up of multiple items)
+						in different ways.
+						2. Likert items represent an item format not a scale.
+						3. Whether Likert items are interval or ordinal is irrelevant in using Likert scale data, which
+						can be taken to be interval.
+						4. If a researcher presents the means and standard deviations (interval scale statistics) for
 						individual Likert items, he/she should also present the percent or frequency of people who
 						selected each option (a nominal scale statistic) and let the reader decide how to interpret the
-						results at the Likert-item level.</li>
-						<li> In any case, we should not rely too heavily on interpreting single items because single items
-						are relatively unreliable.</li>
-					</ol>
-					<small>source&nbsp <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
+						results at the Likert-item level.
+						5. In any case, we should not rely too heavily on interpreting single items because single items
+						are relatively unreliable.
+
+						<small>source &nbsp; <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
+
+						--
+
+						##[Likert - Scales](#/3)
+
+						1. Likert scales are totals or averages of answers to multiple Likert items.
+						2. Likert scales contain multiple items and are therefore likely to be more reliable than single
+							items.
+						3. Naturally, the reliability of Likert scales should be checked using Cronbach alpha or another
+							appropriate reliability estimate.
+						4. Likert scales contain multiple items and can be taken to be interval scales so descriptive
+							statistics can be applied, as well as correlational analyses, factor analyses, analysis of
+							variance procedures, etc. (if all other design conditions and assumptions are met).
+
+						<small>source &nbsp; <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
+
+						---
+
+						## [Whichcandidate.ie](#/2)
+
+						Voter advise application trialled in the local elections 2014 in the six Limerick constituencies. The aim is to cover the next general election in all 							constituencies.
+
+						<br/>
+
+						<small>[UL app seeks to help Limerick voters find their perfect match - Limerick Leader Editorial](http://www.limerickleader.ie/news/local-news/ul-app-seeks-to-help-limerick-voters-find-their-perfect-match-1-5981764)</small>
+
+						<small>[Voting in Limerick, but not sure for who? This will help - Journal.ie](http://www.thejournal.ie/whichcandidate-limerick-voting-ul-1466331-May2014/)</small>
+
+						<br/>
+
+						[Demo](http://www.whichcandidate.ie/)
+
+						--
+
+						## [Whichcandidate.ie - the data](#/4)
+
+						---
+
+						# Dublin R
+
+						---
+
+						# Topics
+
+						---
+
+						# Dublin R
+
+						---
+
+						# Dublin R
+
+						---
+
+						# Dublin R
+
+						---
+
+						# Dublin R
+
+						---
+
+						# Dublin R
+
+					  ---
+
+
         --
-					<h2>Likert scales</h2>
-					<ol>
-						<li> Likert scales are totals or averages of answers to multiple Likert items.</li>
-						<li> Likert scales contain multiple items and are therefore likely to be more reliable than single
-						items.</li>
-						<li> Naturally, the reliability of Likert scales should be checked using Cronbach alpha or another
-						appropriate reliability estimate.</li>
-						<li> Likert scales contain multiple items and can be taken to be interval scales so descriptive
-						statistics can be applied, as well as correlational analyses, factor analyses, analysis of
-						variance procedures, etc. (if all other design conditions and assumptions are met).</li>
-					</ol>
-					<small>source&nbsp <a href='jalt.org/test/PDF/Brown34.pdf'>SHIKEN: JALT Testing & Evaluation SIG Newsletter. March 2011. 15(1) 10-14.</a></small>
 
 				---
 
@@ -191,7 +210,7 @@
 				  ---
 					## THE END
 					#### BY Hakim El Hattab / hakim.se
-          
+
           </script>
 				</section>
 			</div>
