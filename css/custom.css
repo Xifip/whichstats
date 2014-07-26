@@ -1,0 +1,12 @@
+.highlight {color: teal}
+
+.reveal pre .codeFullPage{
+	width:1200px;
+	height:100%;
+	margin:0px;
+}
+
+.reveal pre code.codeFullPage {
+padding: 1px;
+max-height: 700px;
+}

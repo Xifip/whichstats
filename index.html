@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Dublin R - voting advise analysis</title>
+		<title>Dublin R - voting advise data viewed with the likert package</title>
 
 		<meta name="description" content="Use of Likert package to analyse voter advise data">
 		<meta name="author" content="John Costello">
@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -44,7 +45,7 @@
 				<section data-markdown data-separator="^\n---\n$" data-vertical="^\n--\n$">
           <script type="text/template">
 						# Dublin R
-						### Voter advise data analysed with the Likert package
+						### Voter advise data viewed with the Likert package
 
   						<small>Contact: &nbsp; [costelljohn@gmail.com](mailto:costelljohn@gmail.com?Subject=data%20analysis)</small>
 
@@ -65,6 +66,14 @@
 
 						---
 
+					  ##[Likert Items](#/3)
+
+					  <a href="images/example_likert.png" class="image">
+						  <img width="100%" src="images/example_likert.png"/>
+					  </a>
+
+						--
+
 						## [Likert - Levels of measurement](#/2)
 
 						<a href="images/measlev2.gif" class="image">
@@ -73,11 +82,21 @@
 
 						--
 
-					  ##[Likert - Items and Scales](#/3)
+						## [Likert - Common Biases](#/2)
 
-					  <a href="images/example_likert.png" class="image">
-						  <img width="100%" src="images/example_likert.png"/>
+						#### Central tendency bias
+
+						* Respondents may avoid using extreme response categories
+						* Forced choice method can be used to counter act
+
+						<a href="images/measlev2.gif" class="image">
+						  <img width="30%" src="images/bias_01.jpeg"/>
 					  </a>
+
+						#### Acquiescence bias
+
+						* The respondents to a survey have a tendency to agree with all the questions, can be sometimes seen in employee surveys
+						* Balanced keying can be used, where a mix of positive and negative statements are used
 
 						--
 
@@ -140,76 +159,275 @@
 
 						## [Whichcandidate.ie - the data](#/4)
 
+						* <div class='highlight'>vpostions: voter positions on 27 statements</div>
+						* cpositions: candidate positions on 27 statements
+						* <div class='highlight'>questions: 9 optional profile questions presented to the voters</div>
+						* <div class='highlight'>responses: voter responses to the optional profile questions</div>
+						* <div class='highlight'>voters: constituency for the voter</div>
+						* candidates: profile information for the candidates
+
+						--
+
+						## [Whichcandidate.ie - the data](#/4)
+
+						### voter positions
+
+						```
+						> head(vpositions_cast[,1:10])
+							vp_voter_id vp_1 vp_2 vp_3 vp_4 vp_5 vp_6 vp_7 vp_8 vp_9
+						1           1    3    1    3    3    1    1    3    2    3
+						2           2    3    2    1    1    1    1    3    1    3
+						3           4    3    2    1    1    1    1    3    1    3
+						4           5    3    2    1    1    1    1    3    1    3
+						5           7    3    1    1    0    0    0    0    0    3
+						6           9    2    1    1    3    1    3    3    1    0
+						```
+
+						--
+
+						## [Whichcandidate.ie - the data](#/4)
+
+						### optional questions
+
+						```
+						> questions[,1:2]
+							question_id question_text
+							1 Gender
+							2 Age group
+							3 Where do you live?
+							4 Highest level of education completed to date
+							5 Which party do you feel closest to?
+							6 Which party do you intend to give your first preference to in the
+								local elections on May 23rd?
+							7 What is the main reason for voting for your party of choice?
+							8 Which party did you give your first preference vote to in the last
+								general election (2011)?
+							9 In politics people sometimes talk of left and right. Where would you
+								place yourself on a scale from 0 to 10 where 0 means the left and 10
+								means the right?
+						```
+
+						--
+
+						## [Whichcandidate.ie - the data](#/4)
+
+						### responses to options questions
+
+						```
+						> head(responses_cast)
+							res_response_id res_voter_id res_1 res_2 res_3 res_4 res_5 res_6 res_7 res_8 res_9
+						1               8          792     1     4     1     5     0     1     1     3     8
+						2              10          793     1     2     2     5    10     3     0    12     6
+						3              11          795     0     4     0     4     0     1     1     3     4
+						4              13          797     1     3     1     5     0     1     1     0     8
+						5              14          799     1     3     1     2     3     7     0     3     5
+						6              15          802     0     2     0     5    10     7    NA     1     1
+						```
+
+						--
+
+						## [Whichcandidate.ie - the data](#/4)
+
+						```
+						scorecheck <- by(vpositions[,5], vpositions$voter_id, sum)
+						qplot(as.numeric(scorecheck),
+							main="Histogram of voter total scores over 27 questions",
+							xlab="score")
+						qplot(as.numeric(scorecheck[!(scorecheck %in% c(0:20, 81))]),
+							binwidth = 81/30,
+							main="Histogram of voter total scores over 27 questions - removed lower scores",
+							xlab="score")
+						```
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="images/Hist_scores_01.png" class="image">
+											<img height="300px" src="images/Hist_scores_01.png"/>
+										</a>
+										<p>Histogram of sum of scores for each voter</p>
+									</td>
+									<td style="vertical-align:top">
+										<a href="images/Hist_scores_02.png" class="image">
+											<img height="300px" src="images/Hist_scores_02.png"/>
+										</a>
+										<p> ... low totals removed</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
 						---
 
-						# Dublin R
+						## [Likert package](#/2)
 
-						---
+						An R package analyzing and visualizing Likert items
 
-						# Topics
+						[http://jason.bryer.org/likert/](http://jason.bryer.org/likert/)
 
-						---
-
-						# Dublin R
-
-						---
-
-						# Dublin R
-
-						---
-
-						# Dublin R
-
-						---
-
-						# Dublin R
-
-						---
-
-						# Dublin R
-
-					  ---
+						[https://github.com/jbryer/likert](https://github.com/jbryer/likert)
 
 
-        --
+						check out the [demo](https://github.com/jbryer/likert/tree/master/demo) on github
 
-				---
+						--
 
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
+						## [Likert package - basics](#/2)
 
+						* input is a data frame containing the base likert items
+						* returns a likert class with the following elements: results, items, grouping, nlevels, and summary
+						* remove cols not representing response scores
+						* convert the data to fators
 
-				---
+						--
 
-					  <h2>Pretty Code</h2>
-					  <pre><code data-trim contenteditable>
-  function linkify( selector ) {
-    if( supports3DTransforms ) {
+						### [Prepare data for Likert](#/5)
 
-      var nodes = document.querySelectorAll( selector );
+						<pre class="codeFullPage"><code data-trim contenteditable class="codeFullPage r">
+						# this option is required for this example. It is also in the demo. Using the likert function with the
+						# default for digits returns an error for this example.
+						options(digits=2)
 
-      for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-        var node = nodes[i];
+						vp_likert <- vpositions_cast
 
-        if( !node.className ) {
-          node.className += ' roll';
-        }
-      }
-    }
-  }
-					  </code></pre>
-					  <p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+						# merge in the voter constituency data
+						voters_1 <- voters[,names(voters) %in% c("voter_id", "constituency_id")]
+						merge_df_constit <- merge(vpositions_cast, voters_1, by.x = "vp_voter_id", by.y = "voter_id")
+						vp_likert <- merge_df_constit
 
-				  ---
-					## THE END
-					#### BY Hakim El Hattab / hakim.se
+						# remove cols not representing response scores
+						likert.df <- merge_df_constit[,!(names(merge_df_constit) %in% c("vp_voter_id", "constituency_id"))]
+
+						# change no opinions to NA
+						df <- likert.df
+						m <- as.matrix(df)
+						m[m==0] <- NA
+						likert.df <- as.data.frame(m)
+
+						# give the colnames the question test
+						colnames(likert.df) <- issues$issue_question_text
+
+						# convert the data to fators
+						for (i in 1:27){
+							#likert[,i] <- factor(likert[,i], labels=c("no opinion", "disagree", "neither agree or disagree", "agree"))
+							likert.df[,i] <- factor(likert.df[,i], labels=c("disagree", "neither agree or disagree", "agree"))
+						}
+
+						</code></pre>
+
+						--
+
+						### [Likert plot](#/5)
+
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="images/l.png" class="image">
+											<img height="300px" src="images/l.png"/>
+										</a>
+										<a href="images/l_q5.png" class="image">
+											<img height="300px" src="images/l_q5.png"/>
+										</a>
+									</td>
+									<td style="vertical-align:top">
+										<pre  style="width:600px; height:400px" ><code data-trim contenteditable class="r" style="width:600px; height:400px">
+												# a large number of questions and factor
+												# levels results in an unreadable plot
+												l<- likert(likert.df)
+												plot(l, wrap=100)
+
+												# subset gives a better view
+												l_q5<- likert(likert.df[,1:5])
+												plot(l_q5, wrap=40)
+										</code></pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						--
+
+						### [Likert heat plot](#/5)
+
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="images/heat.png" class="image">
+											<img height="300px" src="images/heat.png"/>
+										</a>
+									</td>
+									<td style="vertical-align:top">
+										<pre  style="width:600px; height:400px" ><code data-trim contenteditable class="r" style="width:600px; height:400px">
+												plot(l, type="heat", wrap=150)
+										</code></pre>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						--
+
+						### [Likert plot - grouping](#/5)
+
+						<table>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top">
+										<pre  style="width:1200px; height:300px" ><code data-trim contenteditable class="r" style="width:1200px; height:300px">
+												# need for the grouping variable to be a factor
+												constit_factor <- factor(vp_likert$constituency_id, labels = c("All Local Electoral Areas","Adare-Rathkeale","Cappamore-Kilmallock","Newcastle West","Limerick City East","Limerick City North","Limerick City West"))
+
+												# split the dataset to get something more useful
+												l1<- likert(likert.df[,1:5], grouping = constit_factor)
+												plot(l1, wrap=40)
+										</code></pre>
+									</td>
+								</tr>
+								<tr>
+									<td style="vertical-align:top">
+										<a href="images/l1.png" class="image">
+											<img height="300px" src="images/l1.png"/>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						--
+
+						### [Likert plot examples](#/5)
+
+						<a href="images/example_01.png" class="image" >
+							<img height="600px" src="images/example_01.png"/>
+						</a>
+
+						--
+
+						### [Likert plot examples](#/5)
+
+						<a href="images/example_02.png" class="image" >
+							<img height="600px" src="images/example_02.png"/>
+						</a>
+
+						--
+
+						### [Likert plot examples](#/5)
+
+						<a href="images/example_03.png" class="image" >
+							<img height="600px" src="images/example_03.png"/>
+						</a>
+
+						--
+
+						### [Likert package summary](#/5)
+
+						* Simple to use and quick to create useful plots
+						* Good for visualising Likert items, could group by likert scales
+						* Take care where statistics are used, i.e. on the heat plot, for Likert items
+						* No analysis just displaying the data, use other tools for modelling/ analysing the data
+						* Look through the demo on github to see all the options
 
           </script>
 				</section>
