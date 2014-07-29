@@ -16,5 +16,8 @@ library(likert);
 ensure.installed("reshape2");
 library(reshape2);
 
+ensure.installed("reshape");
+library(reshape);
+
 ensure.installed("plyr");
 library(plyr);
