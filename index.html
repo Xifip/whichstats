@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Dublin R - voting advise data viewed with the likert package</title>
+		<title>Dublin R - voting advice data viewed with the likert package</title>
 
-		<meta name="description" content="Use of Likert package to analyse voter advise data">
+		<meta name="description" content="Use of Likert package to analyse voter advice data">
 		<meta name="author" content="John Costello">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -45,7 +45,7 @@
 				<section data-markdown data-separator="^\n---\n$" data-vertical="^\n--\n$">
           <script type="text/template">
 						# Dublin R
-						### Voter advise data viewed with the Likert package
+						### Voter advice data viewed with the Likert package
 
 						<small> Slides are @ [http://xifip.github.io/whichstats/#/](http://xifip.github.io/whichstats/#/)</small>
 
@@ -147,7 +147,7 @@
 
 						## [Whichcandidate.ie](#/2)
 
-						Voter advise application trialled in the local elections 2014 in the six Limerick constituencies. The aim is to cover the next general election in all 							constituencies.
+						Voter advice application trialled in the local elections 2014 in the six Limerick constituencies. The aim is to cover the next general election in all 							constituencies.
 
 						<br/>
 
@@ -432,7 +432,50 @@
 						* Take care where statistics are used, i.e. on the heat plot, for Likert items
 						* No analysis just displaying the data, use other tools for modelling/ analysing the data
 						* Look through the demo on github to see all the options
+						
+						---
 
+            ### [Kohanan package for Self  Organising Maps](#/2)
+            
+            * Credit for the code in this section is largely due to Shane Lynn from his Dublin R presentation.
+            
+            * see [shanelynn.ie](http://shanelynn.ie/index.php/self-organising-maps-for-customer-segmentation-using-r/) for a great overview of SOMs and how to use them
+
+						--
+						
+            ### [Kohanan package for Self  Organising Maps](#/6)						
+            
+            * Likert package is good for viewig data
+            * Many approaches for analysing the data, we looked at SOMs 
+            * Data was scaled and factors for inclusion in the analysis were selected
+            
+            ```
+            dm.som <- som(data = dm.nona,
+                          keep.data = TRUE,
+                          n.hood = "circular",
+                          alpha=c(0.05,0.01),
+                          rlen=100,
+                          grid = somgrid(12, 12, "hexagonal"))            
+            ```
+            ```
+            ## use hierarchical clustering
+            som_cluster <- cutree(hclust(dist(dm.som$codes)),6)
+            ```
+
+						--
+						
+						### [Kohanan package for Self  Organising Maps](#/6)
+						
+						<a href="mages/som/clusters.png" class="image" >
+							<img height="350px" src="images/som/clusters.png"/>
+						</a> <a href="images/som/gender.png" class="image" >
+							<img height="350px" src="images/som/gender.png"/>
+						</a> <a href="images/som/left-right" class="image" >
+							<img height="350px" src="images/som/left-right.png"/>
+						</a> <a href="images/som/one-off rural housing is damaging to the countryside.png" class="image" >
+							<img height="350px" src="images/som/one-off rural housing is damaging to the countryside.png"/>
+						</a>            
+            
           </script>
 				</section>
 			</div>
