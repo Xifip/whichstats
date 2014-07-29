@@ -21,3 +21,6 @@ library(reshape);
 
 ensure.installed("plyr");
 library(plyr);
+
+ensure.installed("kohonen");
+library(kohonen);
